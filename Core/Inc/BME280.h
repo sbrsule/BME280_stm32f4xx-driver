@@ -1,0 +1,29 @@
+#ifndef __BME280__
+#define __BME280__
+
+/**
+*   GENERAL ADDRESSES
+*/
+#define BME280_ADDRESS              0x77 << 1
+#define BME280_ID_ADDRESS           0xD0
+#define BME280_CTRL_MEAS_ADDRESS    0xF4
+#define BME280_SOFTRESET_ADDRESS    0xE0
+#define BME280_CONFIG_ADDRESS       0xF5
+
+/**
+*   CALIBRATION REGISTER ADDRESSES
+*/
+#define BME280_REGISTER_DIG_T1      0x88
+#define BME280_REGISTER_DIG_T2      0x8A
+#define BME280_REGISTER_DIG_T3      0x8C
+
+/**
+*   POWER MODES
+*/
+#define BME280_SLEEP_MODE   0x00
+#define BME280_FORCED_MODE  0x01
+#define BME280_NORMAL_MODE  0x03
+#define BME280_SOFT_RESET   0xB6
+
+
+#endif 
