@@ -1,6 +1,9 @@
 #ifndef __BME280__
 #define __BME280__
 
+#include <stdint.h>
+#include "main.h"
+
 /**
 *   GENERAL ADDRESSES
 */
@@ -8,93 +11,90 @@
 #define BME280_ID_ADDRESS           0xD0
 #define BME280_CTRL_HUM_ADDRESS     0xF2
 #define BME280_CTRL_MEAS_ADDRESS    0xF4
-#define BME280_SOFTRESET_ADDRESS    0xE0
 #define BME280_CONFIG_ADDRESS       0xF5
 #define BME280_RESET_ADDRESS        0xE0
 
 /**
 *   CALIBRATION REGISTER ADDRESSES
 */
-#define BME280_REGISTER_DIG_T1      0x88
-#define BME280_REGISTER_DIG_T2      0x8A
-#define BME280_REGISTER_DIG_T3      0x8C
+#define BME280_REGISTER_DIG_1      0x88
+#define BME280_REGISTER_DIG_2      0xE1
+
+/**
+*   COMMANDS
+*/
+#define BME280_SOFT_RESET    0xB6
 
 /**
 *   POWER MODES
 */
 typedef enum PowerMode {
-    SLEEP_MODE  = 0x00;
-    FORCED_MODE = 0x01;
-    NORMAL_MODE = 0x03;
+    SLEEP_MODE  = 0b00,
+    FORCED_MODE = 0b01,
+    NORMAL_MODE = 0b11,
 } PowerMode;
 
 /**
-*   HUMIDITY OVERSAMPLING SETTINGS
+*   OVERSAMPLING SETTINGS
 */
-typdef enum OsrsH {
-    H_OFF   = 0b000;
-    H_1x    = 0b001;
-    H_2x    = 0b010;
-    H_4x    = 0b011;
-    H_8x    = 0b100;
-    H_16x   = 0b101;
-} OsrsH;
-
-/**
-*   TEMPERATURE OVERSAMPLING SETTINGS
-*/
-typedef enum OsrsT {
-    T_OFF   = 0b000 << 5;
-    T_1x    = 0b001 << 5;
-    T_2x    = 0b010 << 5;
-    T_4x    = 0b011 << 5;
-    T_8x    = 0b100 << 5;
-    T_16x   = 0b101 << 5;
-} OsrsT;
-
-/**
-*   PRESSURE OVERSAMPLING SETTINGS
-*/
-typedef enum OsrsP {
-    P_OFF   = 0b000 << 2;
-    P_1x    = 0b001 << 2;
-    P_2x    = 0b010 << 2;
-    P_4x    = 0b011 << 2;
-    P_8x    = 0b100 << 2;
-    P_16x   = 0b101 << 2;
-} OsrsP;
+typedef enum Osrs {
+    OSRS_OFF   = 0b000,
+    OSRS_1x    = 0b001,
+    OSRS_2x    = 0b010,
+    OSRS_4x    = 0b011,
+    OSRS_8x    = 0b100,
+    OSRS_16x   = 0b101,
+} Osrs;
 
 /**
 *   TIME BETWEEN MEASUREMENTS (DURING NORMAL MODE)
 */
 typedef enum StandByTime {
-    MS_HALF = 0b000 << 5;
-    MS_62   = 0b001 << 5;
-    MS_125  = 0b010 << 5;
-    MS_250  = 0b011 << 5;
-    MS_500  = 0b100 << 5;
-    MS_1000 = 0b101 << 5;
-    MS_10   = 0b110 << 5;
-    MS_20   = 0b111 << 5;
+    MS_HALF = 0b000,
+    MS_62   = 0b001,
+    MS_125  = 0b010,
+    MS_250  = 0b011,
+    MS_500  = 0b100,
+    MS_1000 = 0b101,
+    MS_10   = 0b110,
+    MS_20   = 0b111,
 } StandByTime;
 
 /**
 *   IRR FILTER TIME CONSTANT SETTINGS
 */
-typdef enum FilterIRR {
-    IRR_OFF = 0b000 << 2;
-    IRR_2   = 0b001 << 2;
-    IRR_4   = 0b010 << 2;
-    IRR_8   = 0b011 << 2;
-    IRR_16  = 0b100 << 2;
-}
+typedef enum FilterIRR {
+    IRR_OFF = 0b000,
+    IRR_2   = 0b001,
+    IRR_4   = 0b010,
+    IRR_8   = 0b011,
+    IRR_16  = 0b100,
+} FilterIRR;
 
 typedef struct BME280
 {
     I2C_HandleTypeDef* i2c_handle;
+    uint8_t id;
+
     uint16_t dig_T1;
     int16_t dig_T2;
     int16_t dig_T3;
+
+    uint16_t dig_P1;
+    int16_t dig_P2;
+    int16_t dig_P3;
+    int16_t dig_P4;
+    int16_t dig_P5;
+    int16_t dig_P6;
+    int16_t dig_P7;
+    int16_t dig_P8;
+    int16_t dig_P9;
+
+    uint8_t dig_H1;
+    int16_t dig_H2;
+    uint8_t dig_H3;
+    int16_t dig_H4;
+    int16_t dig_H5;
 } BME280;
 
 typedef enum BME280_error
@@ -103,5 +103,18 @@ typedef enum BME280_error
     E_INCORRECT_ID  = 1,
     E_I2C           = 2,
 } BME280_error;
+
+/**
+*   SENSOR API
+*/
+BME280_error BME280_init(BME280* dev, I2C_HandleTypeDef* i2c_handle);
+
+/**
+*   PRIVATE FUNCTIONS
+*/
+static BME280_error validate_id(BME280* dev);
+static BME280_error reset(BME280* dev);
+static BME280_error config(BME280* dev, Osrs osrs_h, Osrs osrs_t, Osrs osrs_p, PowerMode mode, StandByTime time, FilterIRR irr);
+static BME280_error trim_read(BME280* dev);
 
 #endif 
