@@ -5,6 +5,13 @@
 #include "main.h"
 
 /**
+*   SELECT UNIT FOR TEMPERATURE 
+*/
+// #define CELSIUS
+#define FAHRENHEIT
+// #define KELVIN
+
+/**
 *   GENERAL ADDRESSES
 */
 #define BME280_ADDRESS              0x77 << 1
@@ -13,7 +20,9 @@
 #define BME280_CTRL_MEAS_ADDRESS    0xF4
 #define BME280_CONFIG_ADDRESS       0xF5
 #define BME280_RESET_ADDRESS        0xE0
-
+#define BME280_TEMPDATA_ADDRESS     0xFA
+#define BME280_HUMDATA_ADDRESS      0xFD
+#define BME280_PRESSDATA_ADDRESS    0xF7
 /**
 *   CALIBRATION REGISTER ADDRESSES
 */
@@ -95,6 +104,10 @@ typedef struct BME280
     uint8_t dig_H3;
     int16_t dig_H4;
     int16_t dig_H5;
+    int8_t dig_H6;
+
+    float temperature;
+    float humidity;
 } BME280;
 
 typedef enum BME280_error

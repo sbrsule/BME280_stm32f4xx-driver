@@ -85,6 +85,8 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/BME280.o
  .data          0x0000000000000000        0x0 build/BME280.o
  .bss           0x0000000000000000        0x0 build/BME280.o
+ .text.read_temperature
+                0x0000000000000000       0x5e build/BME280.o
  .text          0x0000000000000000        0x0 build/main.o
  .data          0x0000000000000000        0x0 build/main.o
  .bss           0x0000000000000000        0x0 build/main.o
@@ -1283,10 +1285,10 @@ LOAD /home/sol/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-d
  .text.validate_id
                 0x0000000008000208       0x30 build/BME280.o
  .text.reset    0x0000000008000238       0x2a build/BME280.o
- .text.config   0x0000000008000262       0x94 build/BME280.o
+ .text.config   0x0000000008000262       0x98 build/BME280.o
  .text.BME280_init
-                0x00000000080002f6       0x3c build/BME280.o
-                0x00000000080002f6                BME280_init
+                0x00000000080002fa       0x38 build/BME280.o
+                0x00000000080002fa                BME280_init
  *fill*         0x0000000008000332        0x2 
  .text.MX_GPIO_Init
                 0x0000000008000334       0xa8 build/main.o
@@ -1691,160 +1693,160 @@ LOAD /home/sol/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-d
  .comment       0x0000000000000039       0x3a /home/sol/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(libc_a-init.o)
  .comment       0x0000000000000039       0x3a /home/sol/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/libgcc.a(_udivmoddi4.o)
 
-.debug_info     0x0000000000000000     0xd11d
- .debug_info    0x0000000000000000      0xad7 build/BME280.o
- .debug_info    0x0000000000000ad7     0x1096 build/main.o
- .debug_info    0x0000000000001b6d      0xcd6 build/stm32f4xx_hal_msp.o
- .debug_info    0x0000000000002843      0x11c build/stm32f4xx_it.o
- .debug_info    0x000000000000295f      0x553 build/system_stm32f4xx.o
- .debug_info    0x0000000000002eb2      0x959 build/stm32f4xx_hal.o
- .debug_info    0x000000000000380b      0xee7 build/stm32f4xx_hal_cortex.o
- .debug_info    0x00000000000046f2      0x73a build/stm32f4xx_hal_gpio.o
- .debug_info    0x0000000000004e2c     0x377f build/stm32f4xx_hal_i2c.o
- .debug_info    0x00000000000085ab      0xab1 build/stm32f4xx_hal_rcc.o
- .debug_info    0x000000000000905c     0x4093 build/stm32f4xx_hal_uart.o
- .debug_info    0x000000000000d0ef       0x2e build/startup_stm32f401xe.o
+.debug_info     0x0000000000000000     0xd3d2
+ .debug_info    0x0000000000000000      0xcc2 build/BME280.o
+ .debug_info    0x0000000000000cc2     0x1160 build/main.o
+ .debug_info    0x0000000000001e22      0xcd6 build/stm32f4xx_hal_msp.o
+ .debug_info    0x0000000000002af8      0x11c build/stm32f4xx_it.o
+ .debug_info    0x0000000000002c14      0x553 build/system_stm32f4xx.o
+ .debug_info    0x0000000000003167      0x959 build/stm32f4xx_hal.o
+ .debug_info    0x0000000000003ac0      0xee7 build/stm32f4xx_hal_cortex.o
+ .debug_info    0x00000000000049a7      0x73a build/stm32f4xx_hal_gpio.o
+ .debug_info    0x00000000000050e1     0x377f build/stm32f4xx_hal_i2c.o
+ .debug_info    0x0000000000008860      0xab1 build/stm32f4xx_hal_rcc.o
+ .debug_info    0x0000000000009311     0x4093 build/stm32f4xx_hal_uart.o
+ .debug_info    0x000000000000d3a4       0x2e build/startup_stm32f401xe.o
 
-.debug_abbrev   0x0000000000000000     0x1918
- .debug_abbrev  0x0000000000000000      0x203 build/BME280.o
- .debug_abbrev  0x0000000000000203      0x2a2 build/main.o
- .debug_abbrev  0x00000000000004a5      0x1d6 build/stm32f4xx_hal_msp.o
- .debug_abbrev  0x000000000000067b       0x7c build/stm32f4xx_it.o
- .debug_abbrev  0x00000000000006f7      0x11e build/system_stm32f4xx.o
- .debug_abbrev  0x0000000000000815      0x277 build/stm32f4xx_hal.o
- .debug_abbrev  0x0000000000000a8c      0x39b build/stm32f4xx_hal_cortex.o
- .debug_abbrev  0x0000000000000e27      0x201 build/stm32f4xx_hal_gpio.o
- .debug_abbrev  0x0000000000001028      0x2d2 build/stm32f4xx_hal_i2c.o
- .debug_abbrev  0x00000000000012fa      0x2c5 build/stm32f4xx_hal_rcc.o
- .debug_abbrev  0x00000000000015bf      0x33c build/stm32f4xx_hal_uart.o
- .debug_abbrev  0x00000000000018fb       0x1d build/startup_stm32f401xe.o
+.debug_abbrev   0x0000000000000000     0x1959
+ .debug_abbrev  0x0000000000000000      0x244 build/BME280.o
+ .debug_abbrev  0x0000000000000244      0x2a2 build/main.o
+ .debug_abbrev  0x00000000000004e6      0x1d6 build/stm32f4xx_hal_msp.o
+ .debug_abbrev  0x00000000000006bc       0x7c build/stm32f4xx_it.o
+ .debug_abbrev  0x0000000000000738      0x11e build/system_stm32f4xx.o
+ .debug_abbrev  0x0000000000000856      0x277 build/stm32f4xx_hal.o
+ .debug_abbrev  0x0000000000000acd      0x39b build/stm32f4xx_hal_cortex.o
+ .debug_abbrev  0x0000000000000e68      0x201 build/stm32f4xx_hal_gpio.o
+ .debug_abbrev  0x0000000000001069      0x2d2 build/stm32f4xx_hal_i2c.o
+ .debug_abbrev  0x000000000000133b      0x2c5 build/stm32f4xx_hal_rcc.o
+ .debug_abbrev  0x0000000000001600      0x33c build/stm32f4xx_hal_uart.o
+ .debug_abbrev  0x000000000000193c       0x1d build/startup_stm32f401xe.o
 
 .debug_loclists
-                0x0000000000000000     0x65ee
+                0x0000000000000000     0x6646
  .debug_loclists
-                0x0000000000000000      0x149 build/BME280.o
+                0x0000000000000000      0x1a1 build/BME280.o
  .debug_loclists
-                0x0000000000000149       0x9b build/stm32f4xx_hal_msp.o
+                0x00000000000001a1       0x9b build/stm32f4xx_hal_msp.o
  .debug_loclists
-                0x00000000000001e4       0xdb build/system_stm32f4xx.o
+                0x000000000000023c       0xdb build/system_stm32f4xx.o
  .debug_loclists
-                0x00000000000002bf       0xc9 build/stm32f4xx_hal.o
+                0x0000000000000317       0xc9 build/stm32f4xx_hal.o
  .debug_loclists
-                0x0000000000000388      0x439 build/stm32f4xx_hal_cortex.o
+                0x00000000000003e0      0x439 build/stm32f4xx_hal_cortex.o
  .debug_loclists
-                0x00000000000007c1      0x356 build/stm32f4xx_hal_gpio.o
+                0x0000000000000819      0x356 build/stm32f4xx_hal_gpio.o
  .debug_loclists
-                0x0000000000000b17     0x2b71 build/stm32f4xx_hal_i2c.o
+                0x0000000000000b6f     0x2b71 build/stm32f4xx_hal_i2c.o
  .debug_loclists
-                0x0000000000003688      0x3a9 build/stm32f4xx_hal_rcc.o
+                0x00000000000036e0      0x3a9 build/stm32f4xx_hal_rcc.o
  .debug_loclists
-                0x0000000000003a31     0x2bbd build/stm32f4xx_hal_uart.o
+                0x0000000000003a89     0x2bbd build/stm32f4xx_hal_uart.o
 
-.debug_aranges  0x0000000000000000      0x8b8
+.debug_aranges  0x0000000000000000      0x8c0
  .debug_aranges
-                0x0000000000000000       0x38 build/BME280.o
+                0x0000000000000000       0x40 build/BME280.o
  .debug_aranges
-                0x0000000000000038       0x48 build/main.o
+                0x0000000000000040       0x48 build/main.o
  .debug_aranges
-                0x0000000000000080       0x40 build/stm32f4xx_hal_msp.o
+                0x0000000000000088       0x40 build/stm32f4xx_hal_msp.o
  .debug_aranges
-                0x00000000000000c0       0x60 build/stm32f4xx_it.o
+                0x00000000000000c8       0x60 build/stm32f4xx_it.o
  .debug_aranges
-                0x0000000000000120       0x28 build/system_stm32f4xx.o
+                0x0000000000000128       0x28 build/system_stm32f4xx.o
  .debug_aranges
-                0x0000000000000148       0xf0 build/stm32f4xx_hal.o
+                0x0000000000000150       0xf0 build/stm32f4xx_hal.o
  .debug_aranges
-                0x0000000000000238       0xd8 build/stm32f4xx_hal_cortex.o
+                0x0000000000000240       0xd8 build/stm32f4xx_hal_cortex.o
  .debug_aranges
-                0x0000000000000310       0x58 build/stm32f4xx_hal_gpio.o
+                0x0000000000000318       0x58 build/stm32f4xx_hal_gpio.o
  .debug_aranges
-                0x0000000000000368      0x2a0 build/stm32f4xx_hal_i2c.o
+                0x0000000000000370      0x2a0 build/stm32f4xx_hal_i2c.o
  .debug_aranges
-                0x0000000000000608       0x88 build/stm32f4xx_hal_rcc.o
+                0x0000000000000610       0x88 build/stm32f4xx_hal_rcc.o
  .debug_aranges
-                0x0000000000000690      0x200 build/stm32f4xx_hal_uart.o
+                0x0000000000000698      0x200 build/stm32f4xx_hal_uart.o
  .debug_aranges
-                0x0000000000000890       0x28 build/startup_stm32f401xe.o
+                0x0000000000000898       0x28 build/startup_stm32f401xe.o
 
 .debug_rnglists
-                0x0000000000000000      0x6c4
+                0x0000000000000000      0x6ca
  .debug_rnglists
-                0x0000000000000000       0x26 build/BME280.o
+                0x0000000000000000       0x2c build/BME280.o
  .debug_rnglists
-                0x0000000000000026       0x33 build/main.o
+                0x000000000000002c       0x33 build/main.o
  .debug_rnglists
-                0x0000000000000059       0x2b build/stm32f4xx_hal_msp.o
+                0x000000000000005f       0x2b build/stm32f4xx_hal_msp.o
  .debug_rnglists
-                0x0000000000000084       0x43 build/stm32f4xx_it.o
+                0x000000000000008a       0x43 build/stm32f4xx_it.o
  .debug_rnglists
-                0x00000000000000c7       0x1a build/system_stm32f4xx.o
+                0x00000000000000cd       0x1a build/system_stm32f4xx.o
  .debug_rnglists
-                0x00000000000000e1       0xaf build/stm32f4xx_hal.o
+                0x00000000000000e7       0xaf build/stm32f4xx_hal.o
  .debug_rnglists
-                0x0000000000000190       0x9d build/stm32f4xx_hal_cortex.o
+                0x0000000000000196       0x9d build/stm32f4xx_hal_cortex.o
  .debug_rnglists
-                0x000000000000022d       0x3f build/stm32f4xx_hal_gpio.o
+                0x0000000000000233       0x3f build/stm32f4xx_hal_gpio.o
  .debug_rnglists
-                0x000000000000026c      0x22f build/stm32f4xx_hal_i2c.o
+                0x0000000000000272      0x22f build/stm32f4xx_hal_i2c.o
  .debug_rnglists
-                0x000000000000049b       0x75 build/stm32f4xx_hal_rcc.o
+                0x00000000000004a1       0x75 build/stm32f4xx_hal_rcc.o
  .debug_rnglists
-                0x0000000000000510      0x19b build/stm32f4xx_hal_uart.o
+                0x0000000000000516      0x19b build/stm32f4xx_hal_uart.o
  .debug_rnglists
-                0x00000000000006ab       0x19 build/startup_stm32f401xe.o
+                0x00000000000006b1       0x19 build/startup_stm32f401xe.o
 
-.debug_line     0x0000000000000000     0xcd46
- .debug_line    0x0000000000000000      0x358 build/BME280.o
- .debug_line    0x0000000000000358      0x548 build/main.o
- .debug_line    0x00000000000008a0      0x3bc build/stm32f4xx_hal_msp.o
- .debug_line    0x0000000000000c5c      0x177 build/stm32f4xx_it.o
- .debug_line    0x0000000000000dd3      0x2e5 build/system_stm32f4xx.o
- .debug_line    0x00000000000010b8      0x5fd build/stm32f4xx_hal.o
- .debug_line    0x00000000000016b5      0x8a8 build/stm32f4xx_hal_cortex.o
- .debug_line    0x0000000000001f5d      0x736 build/stm32f4xx_hal_gpio.o
- .debug_line    0x0000000000002693     0x5431 build/stm32f4xx_hal_i2c.o
- .debug_line    0x0000000000007ac4      0xb9a build/stm32f4xx_hal_rcc.o
- .debug_line    0x000000000000865e     0x4672 build/stm32f4xx_hal_uart.o
- .debug_line    0x000000000000ccd0       0x76 build/startup_stm32f401xe.o
+.debug_line     0x0000000000000000     0xcdb0
+ .debug_line    0x0000000000000000      0x3c2 build/BME280.o
+ .debug_line    0x00000000000003c2      0x548 build/main.o
+ .debug_line    0x000000000000090a      0x3bc build/stm32f4xx_hal_msp.o
+ .debug_line    0x0000000000000cc6      0x177 build/stm32f4xx_it.o
+ .debug_line    0x0000000000000e3d      0x2e5 build/system_stm32f4xx.o
+ .debug_line    0x0000000000001122      0x5fd build/stm32f4xx_hal.o
+ .debug_line    0x000000000000171f      0x8a8 build/stm32f4xx_hal_cortex.o
+ .debug_line    0x0000000000001fc7      0x736 build/stm32f4xx_hal_gpio.o
+ .debug_line    0x00000000000026fd     0x5431 build/stm32f4xx_hal_i2c.o
+ .debug_line    0x0000000000007b2e      0xb9a build/stm32f4xx_hal_rcc.o
+ .debug_line    0x00000000000086c8     0x4672 build/stm32f4xx_hal_uart.o
+ .debug_line    0x000000000000cd3a       0x76 build/startup_stm32f401xe.o
 
-.debug_str      0x0000000000000000     0x2c0d
- .debug_str     0x0000000000000000      0x7b5 build/BME280.o
-                                        0x86b (size before relaxing)
- .debug_str     0x00000000000007b5      0x564 build/main.o
-                                        0xc98 (size before relaxing)
- .debug_str     0x0000000000000d19       0xa7 build/stm32f4xx_hal_msp.o
+.debug_str      0x0000000000000000     0x2ca4
+ .debug_str     0x0000000000000000      0x85b build/BME280.o
+                                        0x925 (size before relaxing)
+ .debug_str     0x000000000000085b      0x564 build/main.o
+                                        0xd0c (size before relaxing)
+ .debug_str     0x0000000000000dbf       0xa7 build/stm32f4xx_hal_msp.o
                                         0xa5f (size before relaxing)
- .debug_str     0x0000000000000dc0       0xb4 build/stm32f4xx_it.o
+ .debug_str     0x0000000000000e66       0xb4 build/stm32f4xx_it.o
                                         0x210 (size before relaxing)
- .debug_str     0x0000000000000e74       0xd8 build/system_stm32f4xx.o
+ .debug_str     0x0000000000000f1a       0xd8 build/system_stm32f4xx.o
                                         0x368 (size before relaxing)
- .debug_str     0x0000000000000f4c      0x6da build/stm32f4xx_hal.o
+ .debug_str     0x0000000000000ff2      0x6da build/stm32f4xx_hal.o
                                         0x9f5 (size before relaxing)
- .debug_str     0x0000000000001626      0x451 build/stm32f4xx_hal_cortex.o
+ .debug_str     0x00000000000016cc      0x447 build/stm32f4xx_hal_cortex.o
                                         0xaab (size before relaxing)
- .debug_str     0x0000000000001a77      0x117 build/stm32f4xx_hal_gpio.o
+ .debug_str     0x0000000000001b13      0x112 build/stm32f4xx_hal_gpio.o
                                         0x4d3 (size before relaxing)
- .debug_str     0x0000000000001b8e      0x8cd build/stm32f4xx_hal_i2c.o
+ .debug_str     0x0000000000001c25      0x8cd build/stm32f4xx_hal_i2c.o
                                        0x1016 (size before relaxing)
- .debug_str     0x000000000000245b      0x181 build/stm32f4xx_hal_rcc.o
+ .debug_str     0x00000000000024f2      0x181 build/stm32f4xx_hal_rcc.o
                                         0x6f9 (size before relaxing)
- .debug_str     0x00000000000025dc      0x5ff build/stm32f4xx_hal_uart.o
+ .debug_str     0x0000000000002673      0x5ff build/stm32f4xx_hal_uart.o
                                         0xd3a (size before relaxing)
- .debug_str     0x0000000000002bdb       0x32 build/startup_stm32f401xe.o
+ .debug_str     0x0000000000002c72       0x32 build/startup_stm32f401xe.o
                                          0x5f (size before relaxing)
 
-.debug_frame    0x0000000000000000     0x17f0
- .debug_frame   0x0000000000000000       0xa0 build/BME280.o
- .debug_frame   0x00000000000000a0       0xa8 build/main.o
- .debug_frame   0x0000000000000148       0xa0 build/stm32f4xx_hal_msp.o
- .debug_frame   0x00000000000001e8       0xa8 build/stm32f4xx_it.o
- .debug_frame   0x0000000000000290       0x30 build/system_stm32f4xx.o
- .debug_frame   0x00000000000002c0      0x1ec build/stm32f4xx_hal.o
- .debug_frame   0x00000000000004ac      0x1cc build/stm32f4xx_hal_cortex.o
- .debug_frame   0x0000000000000678       0xd8 build/stm32f4xx_hal_gpio.o
- .debug_frame   0x0000000000000750      0x970 build/stm32f4xx_hal_i2c.o
- .debug_frame   0x00000000000010c0      0x16c build/stm32f4xx_hal_rcc.o
- .debug_frame   0x000000000000122c      0x5c4 build/stm32f4xx_hal_uart.o
+.debug_frame    0x0000000000000000     0x1814
+ .debug_frame   0x0000000000000000       0xc4 build/BME280.o
+ .debug_frame   0x00000000000000c4       0xa8 build/main.o
+ .debug_frame   0x000000000000016c       0xa0 build/stm32f4xx_hal_msp.o
+ .debug_frame   0x000000000000020c       0xa8 build/stm32f4xx_it.o
+ .debug_frame   0x00000000000002b4       0x30 build/system_stm32f4xx.o
+ .debug_frame   0x00000000000002e4      0x1ec build/stm32f4xx_hal.o
+ .debug_frame   0x00000000000004d0      0x1cc build/stm32f4xx_hal_cortex.o
+ .debug_frame   0x000000000000069c       0xd8 build/stm32f4xx_hal_gpio.o
+ .debug_frame   0x0000000000000774      0x970 build/stm32f4xx_hal_i2c.o
+ .debug_frame   0x00000000000010e4      0x16c build/stm32f4xx_hal_rcc.o
+ .debug_frame   0x0000000000001250      0x5c4 build/stm32f4xx_hal_uart.o
 
 .debug_line_str
                 0x0000000000000000       0x43
@@ -2402,6 +2404,7 @@ memset                                            /home/sol/.config/VSCodium/Use
                                                   /home/sol/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
 pFlash                                            build/stm32f4xx_hal_flash.o
                                                   build/stm32f4xx_hal_flash_ex.o
+read_temperature                                  build/BME280.o
 software_init_hook                                /home/sol/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
 uwTick                                            build/stm32f4xx_hal.o
 uwTickFreq                                        build/stm32f4xx_hal.o
