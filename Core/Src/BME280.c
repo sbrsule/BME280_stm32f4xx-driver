@@ -174,6 +174,7 @@ static BME280_error read_pressure(BME280* dev)
     }
 
     int64_t var1, var2, pressure;
+    int32_t adc_P;
     uint8_t buffer[3], hal_status, shift;
 
     hal_status = HAL_I2C_Mem_Read(dev->i2c_handle, BME280_ADDRESS, BME280_PRESSDATA_ADDRESS, I2C_MEMADD_SIZE_8BIT, buffer, sizeof(buffer), HAL_MAX_DELAY);
