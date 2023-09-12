@@ -23,6 +23,7 @@
 #define BME280_TEMPDATA_ADDRESS     0xFA
 #define BME280_HUMDATA_ADDRESS      0xFD
 #define BME280_PRESSDATA_ADDRESS    0xF7
+
 /**
 *   CALIBRATION REGISTER ADDRESSES
 */
@@ -84,6 +85,9 @@ typedef struct BME280
 {
     I2C_HandleTypeDef* i2c_handle;
     uint8_t id;
+    uint8_t ctrl_meas;
+    uint8_t hum_meas;
+    uint8_t config;
 
     uint16_t dig_T1;
     int16_t dig_T2;
@@ -106,8 +110,11 @@ typedef struct BME280
     int16_t dig_H5;
     int8_t dig_H6;
 
+    int32_t t_fine;
+
     float temperature;
     float humidity;
+    float pressure;
 } BME280;
 
 typedef enum BME280_error
@@ -115,12 +122,14 @@ typedef enum BME280_error
     E_SUCCESS       = 0,
     E_INCORRECT_ID  = 1,
     E_I2C           = 2,
+    E_OTHER         = 3,
 } BME280_error;
 
 /**
 *   SENSOR API
 */
 BME280_error BME280_init(BME280* dev, I2C_HandleTypeDef* i2c_handle);
+BME280_error BME280_measure(BME280* dev);
 
 /**
 *   PRIVATE FUNCTIONS
@@ -129,5 +138,8 @@ static BME280_error validate_id(BME280* dev);
 static BME280_error reset(BME280* dev);
 static BME280_error config(BME280* dev, Osrs osrs_h, Osrs osrs_t, Osrs osrs_p, PowerMode mode, StandByTime time, FilterIRR irr);
 static BME280_error trim_read(BME280* dev);
+static BME280_error read_temperature(BME280* dev);
+static BME280_error read_humidity(BME280* dev);
+static BME280_error read_pressure(BME280* dev);
 
 #endif 
